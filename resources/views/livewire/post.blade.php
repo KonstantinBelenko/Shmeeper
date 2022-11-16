@@ -18,7 +18,7 @@
             {{--  If is_reply  --}}
             @if($post->is_reply == true)
                 <a href="{{ '/post/' . $post->reply_id }}">
-{{--                    <div class="text-[#0066ff] text-xs">Replying to {{ $post->replyingTo()->author->name }}</div>--}}
+                    <div class="text-[#0066ff] text-xs">Replying to {{ $post->replyingTo()->author->name }}</div>
                 </a>
             @endif
 
