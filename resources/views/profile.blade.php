@@ -14,6 +14,15 @@
                 <div class="flex flex-row justify-between">
                     <div class="flex flex-row">
 
+                        {{-- Edit Button --}}
+                        @if($owner)
+                            <div class="absolute bg-white shadow-md box-border ml-[-20px] mt-[-20px] p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#0066ff]">
+                                <a href="{{ url('/profile/edit') }}">
+                                    Edit
+                                </a>
+                            </div>
+                        @endif
+
                         {{-- Avatar --}}
                         @if($user->avatar_type == 'css')
                             <a href="{{ '/profile/' . $user->id }}" >
@@ -25,25 +34,14 @@
                             </a>
                         @endif
 
-
                         {{-- Name & Tag & About --}}
-                        <div class="ml-4 box-borderflex flex-col justify-start">
+                        <div class="ml-4 box-borderflex flex-col justify-start overflow-hidden">
                             <div class="text-[2.5em]">{{ $user->name }}</div>
                             <div>
                                 <p class="inline-block transition-all hover:text-[#0066ff] cursor-pointer">&#64;{{ $user->tag }}</p>
                             </div>
                         </div>
                     </div>
-
-
-                    {{-- Edit Button --}}
-                    @if($owner)
-                        <div>
-                            <a href="{{ url('/profile/edit') }}" class="shadow-md box-border p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#0066ff]">
-                                Edit
-                            </a>
-                        </div>
-                    @endif
 
                 </div>
 
