@@ -13,7 +13,7 @@
                 @method('POST')
 
                 {{-- Profile Block --}}
-                <div class="flex flex-row justify-between bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
+                <div class="mb-8 flex flex-row justify-between bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                     <div class="flex flex-row">
                         {{-- Avatar --}}
                         <input type="file" id="imgupload" style="display:none"/>
@@ -42,7 +42,7 @@
                 </div>
 
                 @foreach($posts as $post)
-                    <div class="mt-4 bg-white overflow-hidden shadow-xl sm:rounded-lg pointer-events-none">
+                    <div class="mb-8 bg-white overflow-hidden shadow-xl sm:rounded-lg pointer-events-none">
                         <div class="p-6 bg-white border-b border-gray-200 bg-gray-50 transition-all filter blur-sm">
                             <livewire:post :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
                         </div>
