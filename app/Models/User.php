@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
         'tag',
         'avatar_url',
+        'avatar_color_1',
+        'avatar_color_2',
         'avatar_type',
     ];
 

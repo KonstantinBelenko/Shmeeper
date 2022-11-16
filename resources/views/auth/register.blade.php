@@ -1,4 +1,4 @@
-<x-guest-layout>
+    <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -25,6 +25,15 @@
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
 
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            <!-- Tag -->
+            <div class="mt-4">
+                <x-input-label for="tag" :value="__('Tag')" />
+
+                <x-text-input id="tag" class="block mt-1 w-full" type="text" name="tag" :value="old('tag')" required />
+
+                <x-input-error :messages="$errors->get('tag')" class="mt-2" />
             </div>
 
             <!-- Password -->
