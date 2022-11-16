@@ -18,7 +18,7 @@
             {{--  If is_reply  --}}
             @if($post->is_reply == true)
                 <a href="{{ '/post/' . $post->reply_id }}">
-                    <div class="text-[#0066ff] text-xs">Replying to {{ $post->replyingTo()->author->name }}</div>
+{{--                    <div class="text-[#0066ff] text-xs">Replying to {{ $post->replyingTo()->author->name }}</div>--}}
                 </a>
             @endif
 
@@ -49,7 +49,7 @@
         <div class="flex">
             <div class="flex">
                 <button wire:click="like" class="inline-flex space-x-2 focus:outline-none focus:ring-0 hover:scale-125 transition-all rounded">
-                    @if($post->isLiked())
+                    @if($isLiked)
                         ✅
                     @else
                         👍
