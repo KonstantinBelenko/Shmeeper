@@ -14,8 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->id();
-        $posts = Post::all()->reverse();
+        $posts = Post::all()->reverse()->load('likes');
 
         return view('home',[
             'posts' => $posts
