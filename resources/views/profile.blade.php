@@ -6,10 +6,10 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <div class=" flex flex-col items-center max-w-3xl mx-auto sm:px-6 lg:px-8">
 
             {{-- Profile Block --}}
-            <div class="mb-8 flex flex-col  bg-white overflow-hidden shadow-xl sm:rounded-lg p-8">
+            <div class="mb-8 min-w-[90%] max-w-[90%] flex flex-col  bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg p-8">
 
                 <div class="flex flex-row justify-between">
                     <div class="flex flex-row">
@@ -48,28 +48,28 @@
                 </div>
 
                 {{-- About --}}
-                <div class="mt-4">
-                    TODO: 🧑‍🦽💨 ABOUT SECTION 🧑‍🦽💨 ABOUT SECTION 🧑‍🦽💨 ABOUT SECTION 🧑‍🦽💨 ABOUT SECTION 🧑‍🦽💨
+                <div class="mt-8">
+                    SOON: 🧑‍🦽💨 ABOUT SECTION
                 </div>
 
             </div>
 
-            {{--      Send Post      --}}
+            {{-- Send Post --}}
             @if($owner)
-                <div class="mb-8 box-border p-4 bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <form name="create-post-form" class="flex items-center justify-center" method="post" action="{{url('post')}}">
+                <div class="min-w-[90%] max-w-[90%] flex flex-col items-center mb-8 box-border p-4 bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg">
+                    <form name="create-post-form" class="flex items-center justify-center min-w-full" method="post" action="{{ url('post')}}">
                         @csrf
                         <input maxlength="512" name="body" placeholder="♾ New Shmeep" type="text" required class="shadow-md rounded w-[90%] border-gray-400">
-                        <input type="submit" value="Shmeep" class="border-gray-100 w-[10%] text-[#0066ff] text-sm shadow-md font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
+                        <input type="submit" value="⚡" class="border-gray-100 w-[10%] text-[#0066ff] text-sm shadow-md font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
 
-                        <input type="hidden" name="comment_id" value="-1" class="border-gray-100 w-[10%] text-[#0066ff] font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
+                        <input type="hidden" name="comment_id" value="-1" class="border-gray-100 text-[#0066ff] font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
                     </form>
                 </div>
             @endif
 
             @foreach($posts as $post)
-                <div class="mb-8 bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200 hover:bg-gray-50 transition-all">
+                <div class="min-w-[90%] max-w-[90%] flex flex-col items-center mb-8 bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg">
+                    <div class="min-w-full p-6 bg-white border-b border-gray-200 hover:bg-gray-50 transition-all">
                         <livewire:post :post="$post" :owner="$owner" :wire:key="'item-'.$post->id" />
                     </div>
                 </div>
