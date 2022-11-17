@@ -27,6 +27,7 @@ class User extends Authenticatable
         'avatar_color_1',
         'avatar_color_2',
         'avatar_type',
+        'about',
     ];
 
     /**

@@ -13,8 +13,14 @@
                 @method('POST')
 
                 {{-- Profile Block --}}
-                <div class="mb-8 flex flex-row justify-between bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
+                <div class="mb-8 w-[100%] flex flex-col bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg px-8 py-6">
                     <div class="flex flex-row">
+
+                        {{-- Save Button --}}
+                        <div class="absolute bg-white shadow-md box-border ml-[-50px] mt-[-40px] p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#0066ff]">
+                            <input type="submit" value="Save">
+                        </div>
+
                         {{-- Avatar --}}
                         <input type="file" id="imgupload" style="display:none"/>
 
@@ -27,16 +33,15 @@
 
                         {{-- Name & Tag --}}
                         <div class="ml-4 box-borderflex flex-col justify-start">
-                            <input maxlength="16" type="text" name="username" required value="{{ $user->name }}" class="w-10/12 h-14 pl-2 text-[2.5em] box-border rounded-md shadow-sm p-1">
+                            <input maxlength="16" type="text" name="username" required value="{{ $user->name }}" class="w-full h-14 text-[2.5em] box-border rounded-md shadow-sm">
                             <div>
                                 <p class="inline-block transition-all hover:text-[#0066ff] cursor-pointer">&#64;{{ $user->tag }}</p>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Save Button --}}
-                    <div>
-                        <input type="submit" value="Save" class="shadow-md box-border p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#0066ff]">
+                    <div class="mt-8">
+                        <input maxlength="128" type="text" name="about" placeholder="About..." value="{{ $user->about }}" class="w-full rounded">
                     </div>
 
                 </div>

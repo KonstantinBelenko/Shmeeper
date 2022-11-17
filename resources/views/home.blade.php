@@ -6,18 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="flex flex-col items-center max-w-2xl mx-auto sm:px-6 lg:px-8">
-            @foreach($posts as $post)
-                <div class="mb-8 min-w-[90%] max-w-[90%] bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200 hover:bg-blue-50 transition-all">
-                        @if($post->author->id == auth()->id())
-                            <livewire:post :post="$post" :owner="true" :wire:key="'item-'.$post->id" />
-                        @else
-                            <livewire:post :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
-                        @endif
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <x-postlist :posts="$posts"></x-postlist>
     </div>
 </x-app-layout>

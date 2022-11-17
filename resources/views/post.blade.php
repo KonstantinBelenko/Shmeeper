@@ -6,39 +6,21 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden sm:rounded-lg">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="flex flex-col items-center overflow-hidden rounded-lg">
 
-                <div class="p-6 bg-white rounded-md border-gray-200 transition-all">
+                <div class="mb-8 w-[100%] p-6 bg-white rounded-md border-gray-200 transition-all">
                     <livewire:post :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
-
-                    {{-- Input --}}
-                    <form name="create-post-form" class="mt-6 flex items-center justify-center" method="post" action="{{url('post')}}">
-                        @csrf
-                        <input maxlength="512" name="body" placeholder="♾ Comment" type="text" required class="shadow-md rounded w-[90%] border-gray-400">
-                        <input type="submit" value="Shmeep" class="border-gray-100 w-[10%] text-sm shadow-md text-[#0066ff] font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
-
-                        <input type="hidden" name="comment_id" value="{{ $post->id }}" class="border-gray-100 w-[10%] text-[#0066ff] font-bold cursor-pointer hover:bg-[#0066ff] hover:text-white transition-all p-2 ml-2 rounded">
-                    </form>
-
                 </div>
 
-                {{--  Replies  --}}
-                <div class="mt-4">
-                    <span class="ml-2 text-xl font-medium">{{ __('Replies') }}</span>
-
-                    @foreach($comments as $comment)
-                        <div class="max-w-3xl mt-4 bg-white border-b rounded-md shadow-sms p-6 hover:bg-blue-50 transition-all">
-                            @if($comment->author->id == auth()->id())
-                                <livewire:post :post="$comment" :owner="true" :wire:key="'item-'.$post->id" />
-                            @else
-                                <livewire:post :post="$comment" :owner="false" :wire:key="'item-'.$post->id" />
-                            @endif
-                        </div>
-                    @endforeach
-                </div>
-
+                {{-- Input --}}
+                <x-send-post-input-box :post_id="$post_id"></x-send-post-input-box>
             </div>
+
         </div>
+
+        {{--  Replies  --}}
+        <x-postlist :posts="$comments"></x-postlist>
+
     </div>
 </x-app-layout>

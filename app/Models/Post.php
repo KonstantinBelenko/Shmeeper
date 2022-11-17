@@ -64,7 +64,7 @@ class Post extends Model
 
         return Post::all()
             ->where('id', '=', $this->reply_id)
-            ->first();;
+            ->first();
 
     }
 

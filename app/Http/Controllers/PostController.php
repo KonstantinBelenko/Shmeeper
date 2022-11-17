@@ -21,6 +21,7 @@ class PostController extends Controller
         return view('post', [
             'post' => $post,
             'comments' => $comments,
+            'post_id' => $post->id,
         ]);
     }
 
