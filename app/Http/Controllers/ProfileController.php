@@ -49,7 +49,10 @@ class ProfileController extends Controller
 
         $user = auth()->user();
 
+        // Update user about
         $user->update(['about' => $request->about]);
+
+        // Update user username
         $name = $request->username;
         if ($name == ''){
             return redirect('/profile/edit');
@@ -57,27 +60,42 @@ class ProfileController extends Controller
             $user->update(['name' => $name]);
         }
 
-        // If image is provided
+        // If image is provided - Update user image
         if ($request->hasFile('image')) {
 
             // Save image
             $original_filename = $request->image->getClientOriginalName();
             $request->image->storeAs('images', $original_filename, 'public');
 
-            // Delete old image if there is
-            if ($user->avatar_url != '') {
-                Storage::disk('public')->delete('images/'.$user->avatar_url);
-            }
-
             $file_name  = $this->random_string(14);
             $file_extension = pathinfo('public/images/'.$original_filename, PATHINFO_EXTENSION);
             $new_file       = $file_name.'.'.$file_extension;
 
-            Storage::disk('public')->move('images/'.$original_filename, 'images/'.$new_file);
+            // Check for a correct filetype
+            if (
+                $file_extension == "png" ||
+                $file_extension == "jpg" ||
+                $file_extension == "jpeg" ||
+                $file_extension == "gif" ||
+                $file_extension == "jfif"
+            )
+            {
+                // Delete old image if there is
+                if ($user->avatar_url != '') {
+                    Storage::disk('public')->delete('images/'.$user->avatar_url);
+                }
 
-            // Update avatar status
-            $user->update(['avatar_url' => $new_file]);
-            $user->update(['avatar_type' => 'image']);
+                Storage::disk('public')->move('images/'.$original_filename, 'images/'.$new_file);
+
+                // Update avatar status
+                $user->update(['avatar_url' => $new_file]);
+                $user->update(['avatar_type' => 'image']);
+            }
+            else
+            {
+                Storage::disk('public')->delete('images/'.$original_filename, 'images/'.$new_file);
+                return redirect('/profile/edit');
+            }
         }
 
         return redirect('/profile');
