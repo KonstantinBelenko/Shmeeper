@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tag', 12)->unique();
-            $table->string('about', 128)->default('🥚 New user')->nullable();
             $table->string('avatar_url')->default('');
             $table->string('avatar_color_1');
             $table->string('avatar_color_2');

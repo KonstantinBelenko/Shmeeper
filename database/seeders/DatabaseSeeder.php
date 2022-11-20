@@ -14,19 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(10)->create();
+         \App\Models\User::factory(50)->create();
 
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
          ]);
 
-        \App\Models\Post::factory(10)->create();
-        \App\Models\Post::factory(3)->create([
+        \App\Models\Post::factory(100)->create();
+        \App\Models\Post::factory(24)->create([
             'is_reply' => true,
-            'reply_id' => fake()->numberBetween(1, 10)
+            'reply_id' => fake()->numberBetween(1, 40)
         ]);
 
-        \App\Models\Like::factory(12)->create();
+        \App\Models\Like::factory(34)->create();
     }
 }
