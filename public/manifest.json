@@ -2,7 +2,7 @@
     "name": "Shmeeper",
     "short_name": "Shmeeper",
     "start_url": "/index.php",
-    "background_color": "#6777ef",
+    "background_color": "#0066ff",
     "description": "Shmeeper - Go shmeep yourself",
     "display": "fullscreen",
     "theme_color": "#0066ff",
