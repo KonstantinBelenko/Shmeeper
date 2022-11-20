@@ -1,15 +1,14 @@
 <div>
 
     {{--  If is_reply  --}}
-{{--    @if($post->is_reply == true)--}}
-{{--        <div class="mb-4">--}}
-{{--            <a href="{{ '/post/' . $post->reply_id }}">--}}
-{{--                @php($repy_post = $post->replyingTo())--}}
-{{--                <div class="text-[#0066ff] text-xs">Replying to {{ $repy_post->author->name }}</div>--}}
-{{--                <div class="text-xs">{{ substr($repy_post->body, 0, 32) }}...</div>--}}
-{{--            </a>--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    @if($post->is_reply == true && $originalPost != null)
+        <div class="mb-4">
+            <a href="{{ '/post/' . $originalPost->id }}">
+                <div class="text-[#0066ff] text-xs">Replying to {{ $originalPost->author->name }}</div>
+                <div class="text-xs">{{ substr($originalPost->body, 0, 32) }}...</div>
+            </a>
+        </div>
+    @endif
 
     {{--    Author Name / Author Tag / Post Timestamp    --}}
     <div class="flex flex-row items-center justify-start">
@@ -43,7 +42,7 @@
     </div>
 
     {{--    Post Body    --}}
-    <div class="mt-4">
+    <div class="mt-4 max-w-xl break-words">
         <a href="{{'/post/' . $post->id}}">
             {{ $post->body }}
         </a>

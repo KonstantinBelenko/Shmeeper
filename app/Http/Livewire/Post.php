@@ -9,6 +9,7 @@ class Post extends Component
 
     public $post;
     public $posts;
+    public $originalPost = null;
 
     public $commentCounter;
     public $likeCounter;
@@ -21,6 +22,11 @@ class Post extends Component
         $this->commentCounter = $this->posts->where('reply_id', $this->post->id)->count();
 
         $this->isLiked = $this->post->likes->where('user_id', auth()->id())->first() != null;
+
+        if ($this->post->is_reply)
+        {
+            $this->originalPost = $this->posts->where('id', $this->post->reply_id)->first();
+        }
     }
 
     public function like() {
