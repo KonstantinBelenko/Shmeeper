@@ -6,6 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        <x-postlist :posts="$posts"></x-postlist>
+        <livewire:paginate-posts :posts="$posts"></livewire:paginate-posts>
     </div>
 </x-app-layout>

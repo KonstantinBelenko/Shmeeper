@@ -22,12 +22,8 @@ class Post extends Model
         return $this->hasMany(Like::class, 'post_id');
     }
 
-    public function likesCount() {
-        return $this->hasMany(Like::class, 'post_id')->count();
-    }
-
-    public function commentsCount() {
-        return $this->hasMany(Post::class, 'reply_id')->count();
+    public function comments() {
+        return $this->hasMany(Post::class, 'reply_id');
     }
 
     public function isLiked() {

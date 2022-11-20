@@ -1,16 +1,15 @@
 <div>
 
     {{--  If is_reply  --}}
-    @if($post->is_reply == true)
-        <div class="mb-4">
-            <a href="{{ '/post/' . $post->reply_id }}">
-                @php($repy_post = $post->replyingTo())
-                <div class="text-[#0066ff] text-xs">Replying to {{ $repy_post->author->name }}</div>
-                <div class="text-xs">{{ substr($repy_post->body, 0, 32) }}...</div>
-            </a>
-        </div>
-
-    @endif
+{{--    @if($post->is_reply == true)--}}
+{{--        <div class="mb-4">--}}
+{{--            <a href="{{ '/post/' . $post->reply_id }}">--}}
+{{--                @php($repy_post = $post->replyingTo())--}}
+{{--                <div class="text-[#0066ff] text-xs">Replying to {{ $repy_post->author->name }}</div>--}}
+{{--                <div class="text-xs">{{ substr($repy_post->body, 0, 32) }}...</div>--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
     {{--    Author Name / Author Tag / Post Timestamp    --}}
     <div class="flex flex-row items-center justify-start">
@@ -63,12 +62,12 @@
                         👍
                     @endif
                 </button>
-                 {{ $counter }}
+                 {{ $likeCounter }}
             </div>
 
-            {{-- N of Comments --}}
+            {{--- N of Comments ---}}
             <div class="ml-4 hover:scale-110 transition-all">
-                <a href="{{'/post/' . $post->id}}">💬 {{ $post->commentsCount() }}</a>
+                <a href="{{'/post/' . $post->id}}">💬 {{ $commentCounter }}</a>
             </div>
         </div>
 

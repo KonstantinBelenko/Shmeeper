@@ -49,7 +49,7 @@
                 @foreach($posts as $post)
                     <div class="mb-8 bg-white overflow-hidden shadow-xl sm:rounded-lg pointer-events-none">
                         <div class="p-6 bg-white border-b border-gray-200 bg-gray-50 transition-all filter blur-sm">
-                            <livewire:post :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
+                            <livewire:post :posts="$posts" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
                         </div>
                     </div>
                 @endforeach

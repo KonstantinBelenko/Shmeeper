@@ -15,8 +15,9 @@ class PostController extends Controller
     public function index($id)
     {
 
-        $post = Post::all()->where('id', '=', $id)->first();
-        $comments = Post::all()->where('reply_id', '=', $id)->reverse()->all();
+        $posts = Post::with('likes', 'author')->get();
+        $post =  $posts->where('id', '=', $id)->first();
+        $comments = $posts->where('reply_id', '=', $id)->reverse();
 
         return view('post', [
             'post' => $post,

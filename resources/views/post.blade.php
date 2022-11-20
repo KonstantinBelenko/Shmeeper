@@ -10,7 +10,7 @@
             <div class="flex flex-col items-center overflow-hidden rounded-lg">
 
                 <div class="mb-8 w-[100%] p-6 bg-white rounded-md border-gray-200 transition-all">
-                    <livewire:post :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
+                    <livewire:post :posts="$comments" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
                 </div>
 
                 {{-- Input --}}

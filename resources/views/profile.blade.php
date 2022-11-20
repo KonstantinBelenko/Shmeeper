@@ -55,7 +55,6 @@
 
         </div>
 
-        <x-postlist :posts="$posts"></x-postlist>
-
+        <livewire:paginate-posts :owner_id="auth()->id()" :posts="$posts"></livewire:paginate-posts>
     </div>
 </x-app-layout>
