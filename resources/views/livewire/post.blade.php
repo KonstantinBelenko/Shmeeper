@@ -1,4 +1,4 @@
-<div>
+<div class="max-w-xl">
 
     {{--  If is_reply  --}}
     @if($post->is_reply == true && $originalPost != null)
@@ -26,9 +26,6 @@
 
         <div class="flex flex-col items-start justify-center">
 
-
-
-
             <div class="font-medium">{{ $post->author->name }}</div>
             <div class="flex flex-row font-medium text-[12px]">
                 {{-- Author Tag --}}
@@ -42,7 +39,7 @@
     </div>
 
     {{--    Post Body    --}}
-    <div class="mt-4 max-w-xl break-words">
+    <div class="mt-4 max-w-xl break-all">
         <a href="{{'/post/' . $post->id}}">
             {{ $post->body }}
         </a>

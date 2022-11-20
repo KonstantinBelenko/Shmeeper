@@ -1,4 +1,4 @@
-<div class="">
+<div>
     <x-postlist :posts="$posts"></x-postlist>
     @livewireScripts
     <script type="text/javascript">
