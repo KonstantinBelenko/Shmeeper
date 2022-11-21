@@ -26,6 +26,8 @@ class Post extends Component
         if ($this->post->is_reply)
         {
             $this->originalPost = $this->posts->where('id', $this->post->reply_id)->first();
+        }else{
+            $this->originalPost = null;
         }
     }
 
