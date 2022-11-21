@@ -43,8 +43,10 @@ class paginatePosts extends Component
 
     public function render()
     {
-        $this->paginatedPosts = $this->posts->forPage(0, $this->limitPerPage);
-        $this->emit('postStore');
+        /* On scroll pagination of posts*/
+        $this->paginatedPosts = $this->posts->slice(0, $this->limitPerPage);
+
+        $this->emit('load-more-finished');
 
         return view('livewire.paginate-posts');
     }
