@@ -56,12 +56,9 @@ class Post extends Model
     }
 
     public function replyingTo() {
-        // Returns original post
-
         return Post::all()
             ->where('id', '=', $this->reply_id)
             ->first();
-
     }
 
     public function flipLike() {

@@ -11,17 +11,16 @@
             <div class="flex flex-col items-center overflow-hidden rounded-lg">
 
                 <div class="mb-8 w-[100%] p-6 bg-white rounded-md border-gray-200 transition-all break-words">
-                    <livewire:post :posts="$comments" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
+                    <livewire:post :posts="$posts" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
                 </div>
 
                 {{-- Input --}}
                 <livewire:send-post-input-box :post_id="$post_id"></livewire:send-post-input-box>
             </div>
-
         </div>
 
         {{--  Replies  --}}
-        <x-postlist :posts="$comments"></x-postlist>
+        <livewire:paginate-posts :listOnlyComments="$post->id" :posts="$comments"></livewire:paginate-posts>
 
     </div>
 </x-app-layout>

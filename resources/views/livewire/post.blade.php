@@ -1,6 +1,6 @@
 <div class="max-w-xl">
 
-    {{--  If is_reply  --}}
+    {{-- If is_reply --}}
     @if($post->is_reply == true)
         <div class="mb-4">
             <a href="{{ '/post/' . $originalPost->id }}">

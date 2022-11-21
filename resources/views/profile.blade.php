@@ -48,6 +48,6 @@
             @endif
 
         </div>
-        <livewire:paginate-posts :listOnlyUser="auth()->user()->id" :posts="$posts"></livewire:paginate-posts>
+        <livewire:paginate-posts :listOnlyUser="$user->id" :posts="$posts"></livewire:paginate-posts>
     </div>
 </x-app-layout>

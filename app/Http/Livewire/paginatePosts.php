@@ -17,6 +17,12 @@ class paginatePosts extends Component
     # This variable is transferred to <livewire:list-posts>
     public $listOnlyUser = null;
 
+    # If this variable is provided
+    # posts will be filtered by reply_id
+    #
+    # This variable is transferred to <livewire:list-posts>
+    public $listOnlyComments = null;
+
     public $limitPerPage = 5;
 
     protected $listeners = [

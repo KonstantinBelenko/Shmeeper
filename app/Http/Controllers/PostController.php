@@ -20,6 +20,7 @@ class PostController extends Controller
         $comments = $posts->where('reply_id', '=', $id)->reverse();
 
         return view('post', [
+            'posts' => $posts,
             'post' => $post,
             'comments' => $comments,
             'post_id' => $post->id,
