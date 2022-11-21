@@ -19,6 +19,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+        <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 
         @livewireStyles
     </head>

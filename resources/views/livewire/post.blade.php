@@ -39,7 +39,7 @@
     </div>
 
     {{--    Post Body    --}}
-    <div class="mt-4 max-w-xl break-all">
+    <div class="max-w-xl break-all whitespace-pre-line">
         <a href="{{'/post/' . $post->id}}">
             {{ $post->body }}
         </a>

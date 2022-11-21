@@ -1,15 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="flex flex-col items-center max-w-2xl mx-auto px-6">
 
             {{-- Profile Block --}}
-            <div class="mb-8 w-[100%] flex flex-col bg-white overflow-hidden shadow-xl rounded-lg sm:rounded-lg px-8 py-6">
+            <div class="mb-8 w-[100%] flex flex-col bg-white overflow-hidden shadow-md rounded-lg sm:rounded-lg px-8 py-6">
 
                 <div class="flex flex-row justify-between">
                     <div class="flex flex-row">
@@ -34,7 +28,7 @@
                         @endif
 
                         <div class="ml-4 box-borderflex flex-col justify-start overflow-hidden">
-                            <div class="text-[2.5em]">{{ $user->name }}</div>
+                            <div class="text-[1.5em]">{{ $user->name }}</div>
                             <div>
                                 <p class="inline-block transition-all hover:text-[#0066ff] cursor-pointer">&#64;{{ $user->tag }}</p>
                             </div>
@@ -42,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="mt-8">
+                <div class="mt-8 break-all">
                     {{ $user->about }}
                 </div>
 
@@ -50,7 +44,7 @@
 
             {{-- Send Post --}}
             @if($owner)
-                <x-send-post-input-box :post_id="-1"></x-send-post-input-box>
+                <livewire:send-post-input-box :post_id="-1"></livewire:send-post-input-box>
             @endif
 
         </div>
