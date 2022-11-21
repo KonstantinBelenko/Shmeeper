@@ -15,7 +15,7 @@
                 </div>
 
                 {{-- Input --}}
-                <x-send-post-input-box :post_id="$post_id"></x-send-post-input-box>
+                <livewire:send-post-input-box :post_id="$post_id"></livewire:send-post-input-box>
             </div>
 
         </div>
