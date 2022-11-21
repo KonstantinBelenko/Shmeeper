@@ -14,8 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('author', 'comments')->get()->reverse()->load('likes');
-
+        $posts = Post::with('author', 'comments', 'likes')->get()->reverse();
         return view('home',[
             'posts' => $posts
         ]);

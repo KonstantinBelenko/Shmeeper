@@ -9,13 +9,26 @@ use Illuminate\Support\Facades\DB;
 class paginatePosts extends Component
 {
     public $posts;
-    public $owner_id = -1;
+    public $paginatedPosts;
+
+    # This is id of the user posts of whom should
+    # only be displayed if it is provided
+    #
+    # This variable is transferred to <livewire:list-posts>
+    public $listOnlyUser = null;
 
     public $limitPerPage = 5;
 
     protected $listeners = [
         'load-more' => 'loadMore'
     ];
+
+    public function mount()
+    {
+        $this->posts = Post::with('author', 'comments', 'likes')
+            ->get()
+            ->reverse();
+    }
 
     public function loadMore()
     {
@@ -24,23 +37,8 @@ class paginatePosts extends Component
 
     public function render()
     {
-        if ($this->owner_id != -1){
-            $this->posts = Post::with('author', 'comments')
-                ->get()
-                ->reverse()
-                ->load('likes')
-                ->where('user_id', $this->owner_id)
-                ->forPage(0, $this->limitPerPage);
-            $this->emit('postStore');
-        }
-        else{
-            $this->posts = Post::with('author', 'comments')
-                ->get()
-                ->reverse()
-                ->load('likes')
-                ->forPage(0, $this->limitPerPage);
-            $this->emit('postStore');
-        }
+        $this->paginatedPosts = $this->posts->forPage(0, $this->limitPerPage);
+        $this->emit('postStore');
 
         return view('livewire.paginate-posts');
     }

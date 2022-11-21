@@ -7,15 +7,16 @@ use Livewire\Component;
 class Post extends Component
 {
 
+    # These are provided
     public $post;
     public $posts;
-    public $originalPost = null;
+    public $owner;
 
+    # These are generat
+    public $originalPost = null;
     public $commentCounter;
     public $likeCounter;
-
     public $isLiked;
-    public $owner;
 
     public function mount() {
         $this->likeCounter = $this->post->likes->count();

@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <livewire:paginate-posts :posts="$posts"></livewire:paginate-posts>
     </div>

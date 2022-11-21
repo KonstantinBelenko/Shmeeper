@@ -1,9 +1,8 @@
 <div>
-    <x-postlist :posts="$posts"></x-postlist>
-    @livewireScripts
+    <livewire:list-posts key="{{ now() }}" :listOnlyUser="$listOnlyUser" :paginatedPosts="$paginatedPosts" :posts="$posts" ></livewire:list-posts>
     <script type="text/javascript">
         window.onscroll = function (ev) {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 window.livewire.emit('load-more');
             }
         };

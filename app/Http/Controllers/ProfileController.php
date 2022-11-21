@@ -13,35 +13,41 @@ class ProfileController extends Controller
     public function owner()
     {
         $user = auth()->user();
-        $posts = $user->posts();
+        $posts = Post::with('likes', 'author', 'comments')->get();
+        $userPosts = $posts->where('user_id', $user->id);
 
         return view('profile',[
             'owner' => true,
             'user' => $user,
             'posts' => $posts,
+            'userPosts' => $userPosts,
         ]);
     }
 
     public function index($id)
     {
         $user = User::all()->where('id', '=', $id)->first();
-        $posts = $user->posts();
+        $posts = Post::with('likes', 'author', 'comments')->get();
+        $userPosts = $posts->where('user_id', $user->id);
 
         return view('profile',[
             'owner' => false,
             'user' => $user,
             'posts' => $posts,
+            'userPosts' => $userPosts,
         ]);
     }
 
     public function edit()
     {
         $user = auth()->user();
-        $posts = Post::with('likes', 'author')->get()->where('user_id', $user->id);
+        $posts = Post::with('likes', 'author', 'comments')->get();
+        $userPosts = $posts->where('user_id', $user->id);
 
         return view('edit', [
             'user' => $user,
             'posts' => $posts,
+            'userPosts' => $userPosts,
         ]);
     }
 
