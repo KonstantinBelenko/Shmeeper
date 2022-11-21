@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Shmeeper') }}</title>
 
         <!-- PWA  -->
-        <meta name="theme-color" content="#6777ef"/>
+        <meta name="theme-color" content="#0066ff"/>
         <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
