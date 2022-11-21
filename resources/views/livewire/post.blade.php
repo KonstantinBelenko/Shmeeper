@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="min-w-full">
     <a href="{{ '/post/' . $post->id }}">
 
         {{-- If is_reply --}}

@@ -1,10 +1,9 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="flex flex-col items-center max-w-2xl mx-auto px-6">
+        <div class="flex flex-col max-w-3xl mx-auto w-full px-6 items-center">
 
             {{-- Profile Block --}}
-            <div class="mb-8 w-[100%] flex flex-col bg-white overflow-hidden shadow-md rounded-lg sm:rounded-lg px-8 py-6">
-
+            <div class="mb-8 min-w-full flex flex-col bg-white overflow-hidden shadow-md rounded-lg sm:rounded-lg p-6">
                 <div class="flex flex-row justify-between">
                     <div class="flex flex-row">
 
@@ -44,10 +43,15 @@
 
             {{-- Send Post --}}
             @if($owner)
-                <livewire:send-post-input-box :post_id="-1"></livewire:send-post-input-box>
+                <div class="max-w-3xl mx-auto w-full">
+                    <livewire:send-post-input-box :post_id="-1"></livewire:send-post-input-box>
+                </div>
             @endif
 
         </div>
-        <livewire:paginate-posts :listOnlyUser="$user->id" :posts="$posts"></livewire:paginate-posts>
+
+        <div class="max-w-3xl mx-auto w-full">
+            <livewire:paginate-posts :listOnlyUser="$user->id" :posts="$posts"></livewire:paginate-posts>
+        </div>
     </div>
 </x-app-layout>

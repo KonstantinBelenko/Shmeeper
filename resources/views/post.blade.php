@@ -7,20 +7,25 @@
 
     <div class="py-12">
 
-        <div class="max-w-2xl mx-auto px-6">
-            <div class="flex flex-col items-center overflow-hidden rounded-lg">
+        <div class="max-w-3xl mx-auto w-full">
 
-                <div class="mb-8 w-[100%] p-6 bg-white rounded-md border-gray-200 transition-all break-words">
-                    <livewire:post :posts="$posts" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
+            {{-- Main Post --}}
+            <div class="flex flex-col items-center min-w-full mx-auto px-6">
+                <div class="mb-8 min-w-full bg-white overflow-hidden hover:shadow-xl rounded-lg sm:rounded-lg transition-all">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <livewire:post :posts="$posts" :post="$post" :owner="false" :wire:key="'item-'.$post->id" />
+                    </div>
                 </div>
-
-                {{-- Input --}}
-                <livewire:send-post-input-box :post_id="$post_id"></livewire:send-post-input-box>
             </div>
+
+            {{-- Input --}}
+            <livewire:send-post-input-box :post_id="$post_id"></livewire:send-post-input-box>
         </div>
 
         {{--  Replies  --}}
-        <livewire:paginate-posts :listOnlyComments="$post->id" :posts="$comments"></livewire:paginate-posts>
+        <div class="max-w-4xl mx-auto w-full">
+            <livewire:paginate-posts :listOnlyComments="$post->id" :posts="$comments"></livewire:paginate-posts>
+        </div>
 
     </div>
 </x-app-layout>

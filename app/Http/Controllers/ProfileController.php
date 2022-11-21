@@ -41,13 +41,9 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = auth()->user();
-        $posts = Post::with('likes', 'author', 'comments')->get();
-        $userPosts = $posts->where('user_id', $user->id);
 
         return view('edit', [
             'user' => $user,
-            'posts' => $posts,
-            'userPosts' => $userPosts,
         ]);
     }
 

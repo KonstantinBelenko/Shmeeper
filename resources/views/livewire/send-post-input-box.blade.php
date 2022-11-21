@@ -1,4 +1,4 @@
-<form name="create-post-form" class="flex flex-col items-center justify-center min-w-full mb-8" method="post" action="{{ url('post')}}">
+<form name="create-post-form" class="flex flex-col items-center justify-center mb-8 min-w-full mx-auto px-6" method="post" action="{{ url('post')}}">
     @csrf
     <textarea
         x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }"
