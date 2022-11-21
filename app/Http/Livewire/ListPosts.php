@@ -18,10 +18,7 @@ class ListPosts extends Component
     {
         # If the id of user is provided - filter out only his posts
         if ($this->listOnlyUser != null) {
-            $this->paginatedPosts = Post::with('author', 'comments', 'likes')
-                ->get()
-                ->reverse()
-                ->where('user_id', $this->listOnlyUser);
+            $this->paginatedPosts->where('user_id', $this->listOnlyUser);
         }
     }
 
