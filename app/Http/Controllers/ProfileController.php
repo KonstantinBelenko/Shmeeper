@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use \App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -87,13 +88,21 @@ class ProfileController extends Controller
                     Storage::disk('public')->delete('images/'.$user->avatar_url);
                 }
 
+                // Rename image to a random string
                 Storage::disk('public')->move('images/'.$original_filename, 'images/'.$new_file);
+
+                // Resize the new image to cropped 300x300 in center
+                $img = Image::make('storage/images/'.$new_file);
+                $img->fit(300, 300, function ($constraint) {
+                    $constraint->upsize();
+                });
+                $img->save('storage/images/'.$new_file);
 
                 // Update avatar status
                 $user->update(['avatar_url' => $new_file]);
                 $user->update(['avatar_type' => 'image']);
             }
-            else
+            else // Delete the saved image and get back to the profile
             {
                 Storage::disk('public')->delete('images/'.$original_filename, 'images/'.$new_file);
                 return redirect('/profile/edit');
