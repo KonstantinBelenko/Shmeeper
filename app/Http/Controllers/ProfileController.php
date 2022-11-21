@@ -91,12 +91,14 @@ class ProfileController extends Controller
                 // Rename image to a random string
                 Storage::disk('public')->move('images/'.$original_filename, 'images/'.$new_file);
 
-                // Resize the new image to cropped 300x300 in center
-                $img = Image::make('storage/images/'.$new_file);
-                $img->fit(300, 300, function ($constraint) {
-                    $constraint->upsize();
-                });
-                $img->save('storage/images/'.$new_file);
+                // Resize the new image to cropped 300x300 in center (if not gif)
+                if ($file_extension != "gif") {
+                    $img = Image::make('storage/images/'.$new_file);
+                    $img->fit(300, 300, function ($constraint) {
+                        $constraint->upsize();
+                    });
+                    $img->save('storage/images/'.$new_file);
+                }
 
                 // Update avatar status
                 $user->update(['avatar_url' => $new_file]);
