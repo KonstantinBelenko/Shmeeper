@@ -1,5 +1,5 @@
 <div>
-    <livewire:list-posts key="{{ now() }}" :listOnlyUser="$listOnlyUser" :paginatedPosts="$paginatedPosts" :posts="$posts" ></livewire:list-posts>
+    <livewire:list-posts key="{{ now() }}" :listOnlyUser="$listOnlyUser" :limitPerPage="$limitPerPage" :posts="$posts" ></livewire:list-posts>
     <script type="text/javascript">
         window.onscroll = function (ev) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
