@@ -15,6 +15,10 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
         <!-- Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
@@ -24,7 +28,7 @@
                 theme: {
                     extend: {
                         colors: {
-                            clifford: '#da373d',
+                            clifford: '#000',
                         }
                     }
                 }
@@ -34,7 +38,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-black">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

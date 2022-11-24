@@ -33,9 +33,11 @@ class Post extends Component
     }
 
     public function like() {
-        $direction = $this->post->flipLike();
-        $this->likeCounter += $direction;
+
         $this->isLiked = !$this->isLiked;
+        $this->likeCounter += $this->isLiked ? 1 : -1;
+
+        $this->post->flipLike();
     }
 
     public function render()

@@ -1,13 +1,11 @@
-<div class="flex flex-col items-center min-w-full mx-auto px-6">
+<div class="flex flex-col items-center min-w-full mx-auto">
     @foreach($paginatedPosts as $paginatedPost)
-        <div class="mb-8 min-w-full bg-white overflow-hidden hover:shadow-xl rounded-lg sm:rounded-lg transition-all">
-            <div class="p-6 bg-white border-b border-gray-200">
-                @if($paginatedPost->author->id == auth()->id())
-                    <livewire:post :posts="$posts" :post="$paginatedPost" :owner="true" :wire:key="'item-'.$paginatedPost->id" />
-                @else
-                    <livewire:post :posts="$posts" :post="$paginatedPost" :owner="false" :wire:key="'item-'.$paginatedPost->id" />
-                @endif
-            </div>
+            <div class="min-w-full p-6 overflow-hidden hover:shadow-xl rounded-lg sm:rounded-lg transition-all text-white">
+            @if($paginatedPost->author->id == auth()->id())
+                <livewire:post :posts="$posts" :post="$paginatedPost" :owner="true" :wire:key="'item-'.$paginatedPost->id" />
+            @else
+                <livewire:post :posts="$posts" :post="$paginatedPost" :owner="false" :wire:key="'item-'.$paginatedPost->id" />
+            @endif
         </div>
     @endforeach
 </div>

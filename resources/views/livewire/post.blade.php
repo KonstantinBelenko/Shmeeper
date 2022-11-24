@@ -3,10 +3,10 @@
 
         {{-- If is_reply --}}
         @if($post->is_reply == true)
-            <div class="mb-4">
+            <div class="mb-2 opacity-50">
                 <a href="{{ '/post/' . $originalPost->id }}" >
-                    <div class="text-blue-500 text-xs">
-                        Replying to {{ $originalPost->author->name }} - {{ substr($originalPost->body, 0, 32) }}...
+                    <div class="text-white text-xs">
+                        Replying to {{ $originalPost->author->name }} - {{ substr($originalPost->body, 0, 16) }}...
                     </div>
                 </a>
             </div>
@@ -29,14 +29,14 @@
             <div class="flex-col">
                 <div class="flex flex-row items-center gap-2">
                     {{-- Author Name --}}
-                    <div class="">{{ $post->author->name }}</div>
-                    -
+                    <div class="font-bold">{{ $post->author->name }}</div>
+
                     {{-- Author Tag --}}
-                    <a href="{{ '/profile/' . $post->user_id }}" class="hover:text-blue-500 text-sm transition-all rounded">&#64;{{ $post->author->tag }}</a>
-                    -
+                    <a href="{{ '/profile/' . $post->user_id }}" class="text-nowrap hover:text-[#FF6B00] text-gray-400 text-sm transition-all rounded">• &#64;{{ $post->author->tag }}</a>
+
                     {{-- Post timestamp--}}
-                    <div class="flex flex-row text-sm">
-                        {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                    <div class="flex flex-row text-sm text-gray-400">
+                        • {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                     </div>
                 </div>
 
@@ -52,22 +52,23 @@
 
         {{-- Post Like / Post Delete --}}
         <div class="flex justify-between">
-            {{--      Like button      --}}
+
             <div class="flex">
                 <div class="flex">
-                    <button wire:click="like" class="inline-flex space-x-2 focus:outline-none focus:ring-0 hover:scale-125 transition-all rounded">
-                        @if($isLiked)
-                            ✅
-                        @else
-                            👍
-                        @endif
+
+                    {{-- Like button --}}
+                    <button wire:click="like" class="inline-flex space-x-2 focus:outline-none focus:ring-0 transition-all rounded">
+                        <x-like-svg width="21" height="21" fill="{{$isLiked ? '#FF6B00' : 'white'}}"></x-like-svg>
                     </button>
                      {{ $likeCounter }}
                 </div>
 
                 {{--- N of Comments ---}}
-                <div class="ml-4 hover:scale-110 transition-all">
-                    <a href="{{'/post/' . $post->id}}">💬 {{ $commentCounter }}</a>
+                <div class="ml-4 transition-all space-x-2">
+                    <a href="{{'/post/' . $post->id}}" class="flex flex-row gap-1">
+                        <x-box-svg width="21" height="21" fill="white"></x-box-svg>
+                        {{ $commentCounter }}
+                    </a>
                 </div>
             </div>
 
