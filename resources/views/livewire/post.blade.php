@@ -5,14 +5,15 @@
         @if($post->is_reply == true)
             <div class="mb-4">
                 <a href="{{ '/post/' . $originalPost->id }}" >
-                    <div class="text-[#0066ff] text-xs">Replying to {{ $originalPost->author->name }}</div>
-                    <div class="text-xs">{{ substr($originalPost->body, 0, 32) }}...</div>
+                    <div class="text-blue-500 text-xs">
+                        Replying to {{ $originalPost->author->name }} - {{ substr($originalPost->body, 0, 32) }}...
+                    </div>
                 </a>
             </div>
         @endif
 
         {{--    Author Name / Author Tag / Post Timestamp    --}}
-        <div class="flex flex-row items-center justify-start">
+        <div class="flex flex-row items-start justify-start">
 
             {{-- Avatar --}}
             @if($post->author->avatar_type == 'css')
@@ -21,29 +22,33 @@
                 </a>
             @else
                 <a href="{{ '/profile/' . $post->author->id }}" >
-                    <img src="{{ asset('/storage/images/'.$post->author->avatar_url) }}" class="w-[50px] h-[50px] mr-2 rounded-full" \>
+                    <img src="{{ asset('/storage/images/'.$post->author->avatar_url) }}" class="w-16 mr-2 rounded-full" \>
                 </a>
             @endif
 
-            <div class="flex flex-col items-start justify-center">
-
-                <div class="font-medium">{{ $post->author->name }}</div>
-                <div class="flex flex-row font-medium text-[12px]">
+            <div class="flex-col">
+                <div class="flex flex-row items-center gap-2">
+                    {{-- Author Name --}}
+                    <div class="">{{ $post->author->name }}</div>
+                    -
                     {{-- Author Tag --}}
-                    <a href="{{ '/profile/' . $post->user_id }}" class="hover:text-[#0066ff] transition-all rounded">&#64;{{ $post->author->tag }}</a>
-
+                    <a href="{{ '/profile/' . $post->user_id }}" class="hover:text-blue-500 text-sm transition-all rounded">&#64;{{ $post->author->tag }}</a>
+                    -
                     {{-- Post timestamp--}}
-                    &nbsp;&nbsp;{{ date('H:m m-d-Y', strtotime($post->created_at)) }}
+                    <div class="flex flex-row text-sm">
+                        {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        {{--    Post Body    --}}
-        <div class="w-full break-all whitespace-pre-line">
-            <a href="{{'/post/' . $post->id}}">
-                {{ $post->body }}
-            </a>
-        </div><br/>
+                {{--    Post Body    --}}
+                <div class="w-full break-all ">
+                    <a href="{{'/post/' . $post->id}}">
+                        {{ $post->body }}
+                    </a>
+                </div><br/>
+            </div>
+
+        </div>
 
         {{-- Post Like / Post Delete --}}
         <div class="flex justify-between">
@@ -72,7 +77,7 @@
             <form method="POST" action="{{url("/post/$post->id")}}">
                 @method('DELETE')
                 @csrf
-                <input type="submit" value="⛔" class="font-bold text-red-500 cursor-pointer hover:scale-125 transition-all rounded">
+                <input type="submit" value="⛔" class="font-bold cursor-pointer hover:scale-125 transition-all rounded">
             </form>
             @endif
 
