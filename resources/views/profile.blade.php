@@ -1,15 +1,16 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="flex flex-col max-w-3xl mx-auto w-full px-6 items-center">
+        <div class="flex flex-col max-w-3xl mx-auto w-full items-center">
 
             {{-- Profile Block --}}
-            <div class="mb-8 min-w-full flex flex-col bg-white overflow-hidden shadow-md rounded-lg sm:rounded-lg p-6">
-                <div class="flex flex-row justify-between">
+            <div class="flex flex-col mb-8 w-full text-white border-[1px] rounded-md">
+
+                <div class="flex flex-row justify-between min-w-full mx-auto p-6">
                     <div class="flex flex-row">
 
                         {{-- Edit Button --}}
                         @if($owner)
-                            <div class="absolute bg-white shadow-md box-border ml-[-50px] mt-[-40px] p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#0066ff]">
+                            <div class="absolute bg-black text-white shadow-md box-border top-20 left-5 p-2 px-4 rounded-md cursor-pointer hover:scale-200 transition-all hover:text-[#FF6B00]">
                                 <a href="{{ url('/profile/edit') }}">
                                     Edit
                                 </a>
@@ -29,13 +30,13 @@
                         <div class="ml-4 box-borderflex flex-col justify-start overflow-hidden">
                             <div class="text-[1.5em]">{{ $user->name }}</div>
                             <div>
-                                <p class="inline-block transition-all hover:text-[#0066ff] cursor-pointer">&#64;{{ $user->tag }}</p>
+                                <p class="inline-block transition-all hover:text-[#FF6B00] cursor-pointer">&#64;{{ $user->tag }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 break-all">
+                <div class="break-all px-6 pb-6">
                     {{ $user->about }}
                 </div>
 
