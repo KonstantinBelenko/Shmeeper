@@ -25,7 +25,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
 
                 <!-- Search -->
-                <input type="text" maxlength="64" placeholder="@Search" class="mr-4 rounded-md h-8 shadow-sm">
+{{--                <input type="text" maxlength="64" placeholder="@Search" class="mr-4 rounded-md h-8 shadow-sm">--}}
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
